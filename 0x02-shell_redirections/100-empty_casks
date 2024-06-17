@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -empty -print | xargs -I {} sh -c 'basename "{}"'
+find . -empty -exec basename {} \;
