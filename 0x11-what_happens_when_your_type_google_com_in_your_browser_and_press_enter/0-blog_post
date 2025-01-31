@@ -1,0 +1,60 @@
+What Happens When You Type https://www.google.com and Press Enter?
+
+This is one of the most common software engineering interview questions, designed to assess your understanding of how the web stack operates. Below, we’ll break down the process step by step, covering DNS requests, TCP/IP, firewalls, HTTPS/SSL, load balancers, web servers, application servers, and databases.
+
+Step 1: DNS Request
+
+When you type https://www.google.com into your browser and press Enter, your browser first checks its cache to see if it already has the IP address for www.google.com. If not, it queries the operating system, which then checks the local DNS cache. If the IP address is not found locally, a DNS query is sent to a recursive resolver, which then queries authoritative DNS servers until it finds the IP address associated with www.google.com.
+
+Step 2: Establishing a TCP/IP Connection
+
+Once the IP address is resolved, your browser establishes a connection using the Transmission Control Protocol (TCP). The TCP handshake process follows these steps:
+
+The browser (client) sends a SYN packet to the web server.
+
+The server responds with a SYN-ACK packet.
+
+The browser replies with an ACK packet, completing the three-way handshake.
+
+TCP operates on the Internet Protocol (IP) layer, ensuring data is correctly routed across the internet to the target server.
+
+Step 3: Firewall Checks
+
+Many organizations use firewalls to monitor and control incoming and outgoing network traffic. Firewalls inspect the packets traveling to and from the web server and apply security rules to prevent unauthorized access or attacks.
+
+Step 4: HTTPS/SSL Encryption
+
+Since the request is made over HTTPS, an encrypted connection is required. The browser and server perform an SSL/TLS handshake to securely exchange encryption keys. This ensures that any data sent between the client and server remains private and secure.
+
+The SSL/TLS handshake involves:
+
+The browser requests the server’s SSL certificate.
+
+The server sends its certificate, which the browser verifies.
+
+A secure session key is generated and exchanged to encrypt communication.
+
+Step 5: Load Balancer
+
+Most large-scale web applications use load balancers to distribute incoming traffic across multiple web servers. The load balancer ensures that no single server is overwhelmed with requests, improving performance and reliability.
+
+Step 6: Web Server
+
+The request is then routed to a web server, such as Nginx or Apache, which processes the request. If the request is for a static resource (like an image or HTML file), the web server serves the file directly.
+
+Step 7: Application Server
+
+For dynamic content, the web server forwards the request to an application server running backend code. This application server (such as Node.js, Django, or Ruby on Rails) processes the request, often interacting with databases and executing business logic.
+
+Step 8: Database Query
+
+If the request requires data retrieval or updates, the application server queries a database (such as MySQL, PostgreSQL, or MongoDB). The database retrieves the required data and sends it back to the application server, which then formats it into a response.
+
+Step 9: Sending the Response
+
+The application server sends the generated response (usually an HTML document) back to the web server, which then transmits it to the browser. The browser renders the content, executes JavaScript, applies CSS styles, and displays the final web page.
+
+Conclusion
+
+This entire process—resolving the DNS, establishing a secure connection, passing through firewalls, routing through load balancers, processing requests on application servers, querying databases, and rendering content—happens within milliseconds, allowing you to access www.google.com almost instantaneously. Understanding these steps gives you a solid foundation in web technologies, networking, and system architecture.
+
